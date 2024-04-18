@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LinkedIn Dupe</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="shortcut icon"
+      href="https://static.licdn.com/sc/h/akt4ae504epesldzj74dzred8"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="index.js" defer></script>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="navbar-head">
+        <a href="./index.html" class="logo">
+          <img src="./assets/linkedin.png" alt="logo" />
+        </a>
+        <div class="search-bar">
+          <img src="./assets/search.png" alt="search" />
+          <input
+            type="text"
+            name="searchBar"
+            id="searchBar"
+            placeholder="Search"
+          />
+        </div>
+      </div>
+      <div class="navbar-content">
+        <ul>
+          <li>
+            <a href="#"><img src="./assets/home.png" alt="home page" /> </a>
+            <span class="navbar-icon-text">Home</span>
+          </li>
+          <li>
+            <a href="#"><img src="./assets/people.png" alt="my network"/></a>
+            <span class="navbar-icon-text">Network</span>
+          </li>
+          <li>
+            <a href="#"> <img src="./assets/briefcase.png" alt="jobs"/></a>
+            <span class="navbar-icon-text">Jobs</span>
+          </li>
+          <li>
+            <a href="#"><img src="./assets/chat.png" alt="messages"/></a>
+            <span class="navbar-icon-text">Messages</span>
+          </li>
+          <li>
+            <a href="#"><img src="./assets/bell.png" alt="notifications"/></a>
+            <span class="navbar-icon-text">Notifications</span>
+          </li>
+          <li>
+            <img
+              src="./assets/profile.png"
+              alt="user pic"
+              class="navbar-user-pic"
+            />
+          </li>
+          <li class="removable-li">
+            <a href="#"><img src="./assets/globe.png" alt="for businesses"/></a>
+            <span class="navbar-icon-text">Business</span>
+          </li>
+          <li class="removable-li">
+            <a href="#"><img src="./assets/learning.png" alt="Learning"/></a>
+            <span class="navbar-icon-text">Learning</span>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Modals -->
+    <div class="add-profile-section-modal">
+      <div class="add-profile-section-modal-content">
+        <div>
+          <h2>Add to profile</h2>
+        </div>
+        <ul>
+          <li>Core</li>
+          <li>Recommended</li>
+          <li>Additional</li>
+        </ul>
+        <button class="close">close</button>
+      </div>
+    </div>
+
+    <!-- Main -->
+
+    <div class="container">
+      <aside class="left-sidebar" aria-label="left-container"></aside>
+      <main class="main-content">
+        <section class="profile-card">
+          <div class="profile-cover">
+            <img src="./assets/hero.jpg" alt="cover pic" class="cover" />
+          </div>
+
+          <div class="profile-info">
+            <div class="profile-header">
+              <img
+                src="./assets/profile.png"
+                alt="user pic"
+                class="profile-pic"
+              />
+              <div>
+                <img
+                  src="./assets/premium.png"
+                  alt="premium"
+                  class="profile-header-icon"
+                />
+                <a href="#">
+                  <img
+                    src="./assets/pencil.png"
+                    alt="edit profile"
+                    class="profile-header-icon"
+                  />
+                </a>
+              </div>
+            </div>
+
+            <div class="profile-name">
+              <h1>Sarah Parker</h1>
+              <img src="./assets/verified.png" alt="" />
+            </div>
+
+            <h3>Software | Engineer | Encora | Data</h3>
+
+            <div class="profile-location-info">
+              <div>
+                <p>
+                  Campinas, SP, Brazil •
+                </p>
+                <a>Check contact infos</a>
+              </div>
+              <div class="profile-location-info-connections">
+                <a>
+                  200+ connections
+                </a>
+              </div>
+            </div>
+            <div class="profile-update-menu">
+              <button class="profile-update-menu-open-to-btn">Open to</button>
+              <button class="profile-update-menu-add-btn">
+                Add profile section
+              </button>
+              <div class="profile-update-menu-more">
+                <button><img src="./assets/dots.png" alt="more" /></button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="metrics">
+          <div>
+            <h3>Suggested for you</h3>
+            <p>
+              <span>
+                <img src="./assets/eye.png" alt="eye icon" />
+              </span>
+              Private to you
+            </p>
+          </div>
+        </section>
+
+        <section class="metrics">
+          <div>
+            <h3>Analytics</h3>
+            <p>
+              <span>
+                <img src="./assets/eye.png" alt="eye icon" />
+              </span>
+              Private to you
+            </p>
+          </div>
+        </section>
+
+        <section class="feed">
+          <div>
+            <h3>Feed</h3>
+            <div class="card-feed">
+              <div class="feed-poster-profile-picture">
+                <img src="./assets/person2.jpg" alt="aws icon" />
+                <div>
+                  <h4><a href="#">Amy Watson</a></h4>
+                  <h5>
+                    Aerospace Engineer at Boeing
+                  </h5>
+                  <h6>
+                    2d ago
+                  </h6>
+                </div>
+              </div>
+              <div class="card-feed-content">
+                <p>
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio
+                  corporis facilis, debitis a qui eum dolor repudiandae harum,
+                  impedit, fugit cumque. Tenetur, a quas labore eveniet
+                  accusantium, vero reiciendis quaerat inventore vel consequatur
+                  iusto fugiat perferendis rerum nihil qui deleniti earum eum
+                  numquam velit quod explicabo, fuga saepe ad temporibus!
+                </p>
+
+                <img
+                  src="./assets/feed_post.jpg"
+                  alt="post"
+                  class="post-image"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <aside class="right-sidebar" aria-label="right">
+        <section class="aside-section-blocks">
+          <div>
+            <div class="aside-section-header-group">
+              <h3>Language</h3>
+              <img
+                src="./assets/pencil.png"
+                alt="edit profile"
+                class="profile-header-icon"
+              />
+            </div>
+            <div class="aside-section-btn-group">
+              <button class="aside-section-btn">
+                Portuguese
+              </button>
+              <button class="aside-section-btn-alt">
+                English
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section class="aside-section-blocks">
+          <div>
+            <div class="aside-section-header-group">
+              <h3>Public URL</h3>
+              <img
+                src="./assets/pencil.png"
+                alt="edit profile"
+                class="profile-header-icon"
+              />
+            </div>
+            <div class="aside-section-header-group">
+              <a href="#">
+                www.linkedin.com/in/sarah-parker
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <section class="aside-section-blocks">
+          <div>
+            <div class="aside-section-header-group">
+              Promoted
+              <img
+                src="./assets/dots.png"
+                alt="edit profile"
+                class="profile-header-icon"
+              />
+            </div>
+            <div class="aside-section-card-group">
+              <div class="aside-section-card">
+                <img src="./assets/nodejs.png" alt="nodejs icon" />
+                <div>
+                  <h5><a href="#">Online Node Courses</a></h5>
+                  <div>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                  </div>
+                </div>
+              </div>
+              <div class="aside-section-card">
+                <img src="./assets/aws.png" alt="aws icon" />
+                <div>
+                  <h5><a href="#">AWS Prep Course</a></h5>
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="aside-section-blocks">
+          <div>
+            <h3>Get in touch</h3>
+            <div class="aside-section-card-group">
+              <div class="aside-section-get-in-touch-card">
+                <img src="./assets/person1.jpg" alt="nodejs icon" />
+                <div>
+                  <h4><a href="#">Mike Holland</a></h4>
+                  <h5>
+                    Financial Analyst at Bankx
+                  </h5>
+                </div>
+              </div>
+
+              <div class="aside-section-get-in-touch-card">
+                <img src="./assets/person2.jpg" alt="aws icon" />
+                <div>
+                  <h4><a href="#">Amy Watson</a></h4>
+                  <h5>
+                    Aerospace Engineer at Boeing
+                  </h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </aside>
+    </div>
+
+    <!-- Footer -->
+    <footer class="left-footer" aria-label="left-footer"></footer>
+    <footer class="main-footer">
+      <div class="footer-content">
+        <ul class="footer-list">
+          <li><a href="#">About</a></li>
+          <li><a href="#">My network</a></li>
+          <li><a href="#">Privacy</a></li>
+          <li><a href="#">Sales</a></li>
+          <li><a href="#">Security</a></li>
+        </ul>
+        <ul class="footer-list">
+          <li><a href="#">Accessibility</a></li>
+          <li><a href="#">Carrers</a></li>
+          <li><a href="#">Ads</a></li>
+          <li><a href="#">Cellphone</a></li>
+        </ul>
+        <ul class="footer-list">
+          <li><a href="#">Talents</a></li>
+          <li><a href="#">Marketing</a></li>
+          <li><a href="#">Public info</a></li>
+          <li><a href="#">Small businesses</a></li>
+        </ul>
+      </div>
+      <p>
+        LinkedIn Corporation © 2024
+      </p>
+    </footer>
+  </body>
+</html>
