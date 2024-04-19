@@ -19,6 +19,10 @@ a {
   color: #38434f;
 }
 
+a:hover {
+  color: black;
+}
+
 section {
   margin: 0.5rem 0;
   border-radius: 10px;
@@ -45,7 +49,7 @@ section {
   width: 100%;
   height: 100%;
   z-index: 1;
-  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .add-profile-section-modal-content {
@@ -53,14 +57,14 @@ section {
   margin: 20% auto;
   padding: 40px;
   border: 1px solid #888;
-  width: 80%;
+  width: 50%;
+  border-radius: 1rem;
 }
 
 .close-modal-btn {
   color: #aaa;
   float: right;
   font-size: 28px;
-  font-weight: bold;
 }
 
 .close-modal-btn:hover,
@@ -153,6 +157,7 @@ section {
   padding: 0.5rem 1.5rem;
   gap: 0.5rem;
   border-radius: 5px;
+  color: #38434f;
 }
 
 .search-bar input {
@@ -460,13 +465,12 @@ section {
 
 .aside-section-card-group {
   display: inline-block;
-  margin-bottom: 10px;
 }
 
 .aside-section-card {
   display: flex;
   margin-top: 5px;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
 }
 
 .aside-section-card img {
@@ -478,7 +482,7 @@ section {
 .aside-section-get-in-touch-card {
   display: flex;
   margin-top: 5px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .aside-section-get-in-touch-card img {
@@ -506,10 +510,244 @@ section {
 
 footer p {
   width: 1200px;
-  padding-left: 0.78rem;
+  padding-left: 0.7rem;
   margin: 1rem auto;
+  color: #38434f;
 }
 
 /* --- Medias --- */
 
 /* >= 1366 is fine */
+
+@media only screen and (max-width: 1270px) {
+  .application {
+    width: 900px;
+  }
+
+  .footer-content {
+    width: 900px;
+  }
+
+  footer p {
+    width: 900px;
+  }
+
+  .navbar {
+    width: 900px;
+  }
+
+  .nav-head {
+    margin-right: 0;
+  }
+
+  .navbar-content ul li a {
+    min-width: 55px;
+  }
+
+  .navbar-content ul li a span {
+    font-size: 0.6em;
+  }
+}
+
+@media only screen and (max-width: 960px) {
+  .application {
+    width: 700px;
+  }
+
+  .footer-content {
+    width: 700px;
+  }
+
+  footer p {
+    width: 700px;
+  }
+
+  .navbar {
+    width: 700px;
+  }
+
+  .nav-head {
+    margin-right: 0;
+  }
+
+  .navbar-content ul li a {
+    min-width: 55px;
+  }
+
+  .navbar-content ul li a span {
+    font-size: 0.6em;
+  }
+
+  .navbar-hideable-icon {
+    display: none;
+  }
+
+  .main-content-profile {
+    grid-column-start: 1;
+    grid-column-end: 4;
+  }
+
+  .main-content-profile-menu {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 760px) {
+  .application {
+    width: 500px;
+  }
+
+  .footer-content {
+    width: 500px;
+  }
+
+  footer p {
+    width: 500px;
+  }
+
+  .navbar {
+    width: 500px;
+    margin-left: auto;
+  }
+
+  .nav-head {
+    margin-right: 0;
+    margin-left: 0;
+  }
+  .navbar-content li {
+    padding-right: 10px;
+  }
+
+  .navbar-content ul li a {
+    min-width: 55px;
+  }
+
+  .navbar-content ul li a span {
+    display: none;
+  }
+
+  .navbar-hideable-icon {
+    display: none;
+  }
+
+  .search-bar {
+    background-color: #fff;
+    padding: 0;
+  }
+  .search-bar i {
+    padding-left: 20px;
+    font-size: 1.5rem;
+  }
+
+  .search-bar input {
+    display: none;
+  }
+
+  .main-content-profile {
+    grid-column-start: 1;
+    grid-column-end: 4;
+  }
+
+  .main-content-profile-menu {
+    display: none;
+  }
+  .application-header {
+    margin-left: auto;
+  }
+}
+
+@media only screen and (max-width: 535px) {
+  .application {
+    width: 400px;
+  }
+
+  .footer-content {
+    width: 400px;
+  }
+
+  footer p {
+    width: 400px;
+  }
+
+  .navbar {
+    width: 400px;
+    margin: auto;
+  }
+
+  .navbar-content {
+    margin: 0;
+  }
+
+  .navbar-content li {
+    padding-right: 0;
+  }
+
+  .navbar-content ul li a {
+    min-width: 50px;
+  }
+
+  .search-bar i {
+    padding: 0 10px;
+    font-size: 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 455px) {
+  .application {
+    width: 360px;
+  }
+
+  .footer-content {
+    width: 360px;
+  }
+
+  footer p {
+    padding-left: 1.5em;
+  }
+
+  .navbar {
+    width: 360px;
+    margin: 0;
+  }
+
+  .navbar-content ul li a {
+    min-width: 45px;
+  }
+
+  .search-bar i {
+    padding: 0 7px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .navbar {
+    width: 80vw;
+    margin: auto;
+  }
+
+  .application {
+    width: 80vw;
+  }
+
+  .application-header {
+    padding: 0 1rem;
+  }
+
+  .navbar-content ul li a {
+    min-width: 10vw;
+  }
+
+  .logo {
+    width: 20px;
+    margin-right: 20px;
+  }
+
+  .footer-content {
+    width: 80vw;
+  }
+
+  footer p {
+    width: 80vw;
+    padding-left: 10px;
+  }
+}
