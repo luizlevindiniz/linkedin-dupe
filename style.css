@@ -8,6 +8,7 @@
 body {
   background-color: #caccce;
   scroll-behavior: smooth;
+  font-size: 100%;
 }
 
 a {
@@ -41,20 +42,18 @@ ul {
 
 .container {
   display: flex;
-  padding: 0.5rem 0.5rem;
-  justify-content: space-between;
+  padding: 0.5rem 0;
   z-index: 0;
 }
 
 .add-profile-section-modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  display: none;
+  position: fixed;
+  z-index: 1;
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
+  width: 100%;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
