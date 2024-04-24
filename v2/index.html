@@ -18,9 +18,112 @@
     <script src="./index.js" defer></script>
   </head>
   <body>
+    <!--Modals-->
+    <div class="application__modal hidden">
+      <div class="application__modal-content">
+        <div class="application__modal-head">
+          <h2>Add to profile</h2>
+          <button class="application__modal-close-btn">
+            <i class="fa-solid fa-x"></i>
+          </button>
+        </div>
+        <div class="application__modal-body">
+          <ul>
+            <li>
+              <div class="modal__li expand-core">
+                <div class="modal--expandable-head">
+                  <h3>Core</h3>
+                  <button class="modal__li--expand">
+                    <i class="fa-solid fa-chevron-down"></i>
+                    <i class="fa-solid fa-chevron-up hidden"></i>
+                  </button>
+                </div>
+                <div class="modal--expandable-content hidden">
+                  <div class="modal--expandable-card">
+                    <a href="#">Text</a>
+                  </div>
+                  <div class="modal--expandable-card">
+                    <a href="#">Text</a>
+                  </div>
+                  <div class="modal--expandable-card">
+                    <a href="#">Text</a>
+                  </div>
+                  <div class="modal--expandable-card">
+                    <a href="#">Text</a>
+                  </div>
+                  <div class="modal--expandable-card">
+                    <a href="#">Text</a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="modal__li expand-recommended">
+                <div class="modal--expandable-head">
+                  <h3>Recommended</h3>
+                  <button class="modal__li--expand">
+                    <i class="fa-solid fa-chevron-down"></i>
+                    <i class="fa-solid fa-chevron-up hidden"></i>
+                  </button>
+                </div>
+                <div class="modal--expandable-content hidden">
+                  <div>
+                    <div class="modal--expandable-card">
+                      <a href="#">Text</a>
+                    </div>
+                    <div class="modal--expandable-card">
+                      <a href="#">Text</a>
+                    </div>
+                    <div class="modal--expandable-card">
+                      <a href="#">Text</a>
+                    </div>
+                    <div class="modal--expandable-card">
+                      <a href="#">Text</a>
+                    </div>
+                    <div class="modal--expandable-card">
+                      <a href="#">Text</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="modal__li expand-additional">
+                <div class="modal--expandable-head ">
+                  <h3>Additional</h3>
+                  <button class="modal__li--expand">
+                    <i class="fa-solid fa-chevron-down"></i>
+                    <i class="fa-solid fa-chevron-up hidden"></i>
+                  </button>
+                </div>
+                <div class="modal--expandable-content hidden">
+                  <div class="modal--expandable-card">
+                    <a href="#">Text</a>
+                  </div>
+                  <div class="modal--expandable-card">
+                    <a href="#">Text</a>
+                  </div>
+                  <div class="modal--expandable-card">
+                    <a href="#">Text</a>
+                  </div>
+                  <div class="modal--expandable-card">
+                    <a href="#">Text</a>
+                  </div>
+                  <div class="modal--expandable-card">
+                    <a href="#">Text</a>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="application__modal--overlay hidden"></div>
+    <!--App Outlet-->
     <div class="outlet">
       <!--Navbar-->
-      <header class="application-header">
+      <header class="outlet__header">
         <!--Navbar-->
         <nav class="navbar">
           <div class="nav-head">
@@ -92,25 +195,6 @@
       </header>
 
       <div class="application">
-        <!--Modals-->
-        <div class="add-profile-section-modal">
-          <div class="add-profile-section-modal-content">
-            <button class="close-modal-btn">
-              <i class="fa-solid fa-x"></i>
-            </button>
-            <div>
-              <h2>Add to profile</h2>
-            </div>
-            <div>
-              <ul>
-                <li>Core</li>
-                <li>Recommended</li>
-                <li>Additional</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
         <!--Main-->
         <main class="main-content-profile">
           <section class="profile-card">
