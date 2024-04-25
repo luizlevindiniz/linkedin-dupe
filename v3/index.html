@@ -14,10 +14,15 @@
       href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
       rel="stylesheet"
     />
-    <title>Sarah Parker | LinkedIn</title>
+    <title>Profile | LinkedIn</title>
+    <script src="./app.js" defer></script>
     <script src="./index.js" defer></script>
   </head>
   <body>
+    <!-- Loading Overlay -->
+    <div class="loading__modal">
+      <div class="loading__modal-spinner"></div>
+    </div>
     <!--Modals-->
     <div class="application__modal hidden">
       <div class="application__modal-content">
@@ -170,7 +175,7 @@
               <li class="navbar-user-profile-menu">
                 <a href="#">
                   <img
-                    src="../assets/profile.png"
+                    src="../assets/unknown.jpg"
                     alt="profile-pic"
                     class="navbar-profile-picture"
                   />
@@ -199,13 +204,17 @@
         <main class="main-content-profile">
           <section class="profile-card">
             <div class="profile-cover">
-              <img src="../assets/hero.jpg" alt="cover pic" class="cover" />
+              <img
+                src="../assets/genericBackground.jpg"
+                alt="cover pic"
+                class="cover"
+              />
             </div>
 
             <div class="profile-info">
               <div class="profile-header">
                 <img
-                  src="../assets/profile.png"
+                  src="../assets/unknown.jpg"
                   alt="user pic"
                   class="profile-pic"
                 />
@@ -226,16 +235,16 @@
               </div>
 
               <div class="profile-name">
-                <h1>Sarah Parker</h1>
+                <h1 class="profile-name--name-h1">User</h1>
                 <img src="../assets/verified.png" alt="" />
               </div>
 
-              <h3>Software | Engineer | Encora | Data</h3>
+              <h3 class="profile--role">Role</h3>
 
               <div class="profile-location-info">
                 <div>
-                  <p>
-                    Campinas, SP, Brazil •
+                  <p class="profile-location-info--paragraph">
+                    •
                   </p>
                   <a>Check contact infos</a>
                 </div>

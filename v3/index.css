@@ -41,7 +41,7 @@ section {
   margin: 0 auto;
 }
 
-/* Modal */
+/* Application Modal */
 
 .application__modal {
   position: fixed;
@@ -145,6 +145,46 @@ section {
 
 .hidden {
   display: none;
+}
+
+/* Loading Modal */
+.loading__modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f7f9fb;
+  transition: opacity 0.75s, visibility 0.75s;
+  z-index: 3;
+}
+
+.loading__modal--hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loading__modal-spinner {
+  content: "";
+  width: 75px;
+  height: 75px;
+  border: 15px solid #ddd;
+  border-top-color: #0077b5;
+  border-radius: 50%;
+  animation: loading 0.75s ease infinite;
+  z-index: 3;
+}
+
+@keyframes loading {
+  from {
+    transform: rotate(0turn);
+  }
+  to {
+    transform: rotate(1turn);
+  }
 }
 
 /* Header */

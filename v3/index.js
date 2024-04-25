@@ -36,8 +36,6 @@ function toggleModalSection(section) {
       .getElementsByClassName("modal--expandable-content")
       .item(0);
 
-    console.log(section);
-
     if (chevronDown.classList.contains("hidden")) {
       chevronDown.classList.remove("hidden");
       chevronUp.classList.add("hidden");
