@@ -32,6 +32,14 @@ section {
   padding-bottom: 1rem;
 }
 
+button {
+  background: none;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
 .application {
   display: grid;
   gap: 10px 0;
@@ -422,6 +430,7 @@ section {
   border-radius: 50%;
   width: 2.5rem;
   height: 2.5rem;
+  border: 1px solid black;
 }
 
 .profile-update-menu-more button:hover {
@@ -471,12 +480,41 @@ section {
 .feed h3 {
   font-size: 1.2rem;
   line-height: 1.25;
-  margin-bottom: 7px;
+}
+
+.feed-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.card-feed {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid #d1cec8;
+  padding-top: 10px;
+  justify-content: center;
+}
+
+.card-feed p {
+  margin-bottom: 10px;
+  text-align: justify;
+}
+
+.card-feed-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-feed-head-icons i {
+  padding-right: 5px;
 }
 
 .feed-poster-profile-picture img {
-  width: 3em;
-  height: 3em;
+  width: 3rem;
+  height: 3rem;
   margin-right: 10px;
   border-radius: 50%;
 }
@@ -489,16 +527,11 @@ section {
 
 .post-image {
   width: 100%;
+  border-radius: 10px;
 }
 
-.card-feed {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-.card-feed p {
-  margin-bottom: 10px;
+.card-feed-content {
+  padding-bottom: 10px;
 }
 
 /* Aside Right */
@@ -623,9 +656,13 @@ section {
 
 footer p {
   width: 1200px;
-  padding-left: 0.7rem;
+  padding-left: 0.2rem;
   margin: 1rem auto;
   color: #38434f;
+}
+
+.footer-content ul {
+  padding-right: 10px;
 }
 
 /* --- Medias --- */
@@ -865,6 +902,6 @@ footer p {
 
   footer p {
     width: 80vw;
-    padding-left: 10px;
+    padding-left: 2px;
   }
 }
