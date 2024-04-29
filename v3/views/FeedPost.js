@@ -1,4 +1,4 @@
-function buildFeedPost(description, createdAt, document) {
+function buildFeedPost(id, description, createdAt, document) {
   const feedString = `
     <div class="card-feed">
         <div class="card-feed-head">
@@ -17,7 +17,7 @@ function buildFeedPost(description, createdAt, document) {
               </h6>
           </div>
         </div>
-        <div class="card-feed-head-icons">
+        <div class="card-feed-head-icons"  id=${id}>
           <button id="btn__edit-post--modal">
             <i class="fa-solid fa-pen-to-square"></i>
           </button>

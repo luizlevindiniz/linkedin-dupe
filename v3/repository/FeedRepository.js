@@ -13,6 +13,22 @@ class FeedRepository {
       return { message: "Error" };
     }
   }
+
+  static async createNewPost(url, post) {
+    let payload = {
+      description: post,
+    };
+    try {
+      const res = await axios.post(`${url}/feed/`, payload);
+      if (res.status < 200 || res.status >= 400) {
+        return { message: "Unable to create post. Check request status." };
+      }
+      return res.status;
+    } catch (err) {
+      console.log(err);
+      return { message: "Error" };
+    }
+  }
 }
 
 export { FeedRepository };

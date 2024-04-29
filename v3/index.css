@@ -95,7 +95,7 @@ button {
   padding-bottom: 0;
 }
 
-/* Loading Modal */
+/* --- Loading Modal --- */
 .load-spinner--modal {
   position: fixed;
   top: 0;
@@ -133,6 +133,59 @@ button {
   to {
     transform: rotate(1turn);
   }
+}
+
+/* --- Delete Post Modal --- */
+.delete--modal-body {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2em;
+  margin-top: 1em;
+  align-items: center;
+}
+
+#btn__delete--modal-submit {
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  color: #ffffff;
+  background: #b43030;
+  padding: 0.5em 1em;
+}
+
+#btn__delete--modal-submit:hover {
+  background: #ac140a;
+}
+
+/* --- Create Post Modal --- */
+.create-post--modal-body {
+  margin-top: 1em;
+}
+
+.create-post--modal-body textarea {
+  width: 100%;
+  display: block;
+  padding: 10px;
+  height: 6em;
+  border-radius: 5px;
+  outline: none;
+  font-size: 16px;
+  border: 1px solid #615d5d;
+}
+
+#btn__create--modal-submit {
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  color: #ffffff;
+  font-size: 20px;
+  background: #0075b5;
+  padding: 10px 20px 10px 20px;
+  margin-top: 10px;
+}
+
+#btn__create--modal-submit:hover {
+  background: #013e5f;
 }
 
 /* --- common --- */

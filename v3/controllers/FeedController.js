@@ -32,49 +32,87 @@ class FeedController {
     });
 
     this.#buildFeedHTML(posts);
+    this.#addCreateModalListener();
+    this.#addDeleteModalListeners();
   }
 
   #buildFeedHTML(posts) {
     try {
       const feedWrapper = this.#document.querySelector(".feed-wrapper");
+
       posts.forEach((post) => {
         feedWrapper.appendChild(
           buildFeedPost(
+            post.getId(),
             post.getDescription(),
             post.getCreatedAt(),
             this.#document
           )
         );
       });
-
-      const deletePostModal = this.#document.querySelector("#delete--modal");
-
-      this.#openModalListener(deletePostModal);
-      this.#closeModalListener(deletePostModal);
     } catch (err) {
       console.log(err);
     }
   }
 
-  #openModalListener(deletePostModal) {
-    const deletePostBtns = this.#document.querySelectorAll(
-      "#btn__delete-post--modal"
+  #addCreateModalListener() {
+    /* Create */
+    const createPostModal = this.#document.querySelector("#create-post--modal");
+    const openCreateModalBtn = this.#document.getElementById(
+      "btn__create-post--modal"
+    );
+    const closeCreateModalBtn = this.#document.getElementById(
+      "btn__create--modal-close"
     );
 
-    deletePostBtns.forEach((btn) => {
-      btn.addEventListener("click", () =>
-        showModal(deletePostModal, modalOverlay)
+    this.#createNewPost(createPostModal);
+    this.#openNewPostModal(createPostModal, openCreateModalBtn);
+    this.#closeModal(createPostModal, closeCreateModalBtn);
+  }
+
+  #createNewPost(modal) {
+    const form = this.#document.getElementById("form__create-new-post");
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      let description = this.#document.getElementById(
+        "input__create-post--modal"
       );
+
+      await FeedRepository.createNewPost(this.#url, description.value);
+      description.value = "";
+      hideModal(modal);
     });
   }
 
-  #closeModalListener(deletePostModal) {
+  #openNewPostModal(modal, button) {
+    button.addEventListener("click", () => showModal(modal, modalOverlay));
+  }
+
+  #addDeleteModalListeners() {
+    /* Delete */
+    const deletePostModal = this.#document.querySelector("#delete--modal");
+    const openDeleteModalBtns = this.#document.querySelectorAll(
+      "#btn__delete-post--modal"
+    );
     const closeDeleteModalBtn = this.#document.getElementById(
       "btn__delete--modal-close"
     );
 
-    closeDeleteModalBtn.addEventListener("click", () => {
-      hideModal(deletePostModal, modalOverlay);
+    this.#openDeleteModal(deletePostModal, openDeleteModalBtns);
+    this.#closeModal(deletePostModal, closeDeleteModalBtn);
+  }
+
+  #openDeleteModal(modal, buttons) {
+    buttons.forEach((btn) => {
+      console.log(btn.parentElement.id);
+      btn.addEventListener("click", () => showModal(modal, modalOverlay));
+    });
+  }
+
+  #closeModal(modal, buttons) {
+    buttons.addEventListener("click", () => {
+      hideModal(modal, modalOverlay);
     });
   }
 }
