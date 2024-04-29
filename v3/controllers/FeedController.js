@@ -1,7 +1,7 @@
 import Feed from "../models/Feed";
 import { FeedRepository } from "../repository/FeedRepository";
 import { buildFeedPost } from "../views/FeedPost";
-import { showModal, hideModal, modalOverlay } from "../utils/const";
+import { showModal, hideModal } from "../utils/const";
 class FeedController {
   #document;
   #url;
@@ -55,8 +55,8 @@ class FeedController {
     }
   }
 
+  /* Create */
   #addCreateModalListener() {
-    /* Create */
     const createPostModal = this.#document.querySelector("#create-post--modal");
     const openCreateModalBtn = this.#document.getElementById(
       "btn__create-post--modal"
@@ -86,11 +86,11 @@ class FeedController {
   }
 
   #openNewPostModal(modal, button) {
-    button.addEventListener("click", () => showModal(modal, modalOverlay));
+    button.addEventListener("click", () => showModal(modal));
   }
 
+  /* Delete */
   #addDeleteModalListeners() {
-    /* Delete */
     const deletePostModal = this.#document.querySelector("#delete--modal");
     const openDeleteModalBtns = this.#document.querySelectorAll(
       "#btn__delete-post--modal"
@@ -103,16 +103,26 @@ class FeedController {
     this.#closeModal(deletePostModal, closeDeleteModalBtn);
   }
 
+  async #deletePost(postId) {
+    return await FeedRepository.deletePost(this.#url, postId);
+  }
+
+  #raiseDeleteModal(modal, id) {
+    const submitBtn = modal.querySelector("#btn__delete--modal-submit");
+    submitBtn.addEventListener("click", async () => await this.#deletePost(id));
+  }
+
   #openDeleteModal(modal, buttons) {
     buttons.forEach((btn) => {
-      console.log(btn.parentElement.id);
-      btn.addEventListener("click", () => showModal(modal, modalOverlay));
+      const id = btn.parentElement.id;
+      btn.addEventListener("click", () => this.#raiseDeleteModal(modal, id));
+      btn.addEventListener("click", () => showModal(modal));
     });
   }
 
   #closeModal(modal, buttons) {
     buttons.addEventListener("click", () => {
-      hideModal(modal, modalOverlay);
+      hideModal(modal);
     });
   }
 }
