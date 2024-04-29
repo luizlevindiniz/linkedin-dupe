@@ -39,7 +39,9 @@ class FeedController {
   #buildFeedHTML(posts) {
     try {
       const feedWrapper = this.#document.querySelector(".feed-wrapper");
-
+      while (feedWrapper.hasChildNodes()) {
+        feedWrapper.removeChild(feedWrapper.firstChild);
+      }
       posts.forEach((post) => {
         feedWrapper.appendChild(
           buildFeedPost(
@@ -80,6 +82,7 @@ class FeedController {
       );
 
       await FeedRepository.createNewPost(this.#url, description.value);
+      await this.#getFeedData();
       description.value = "";
       hideModal(modal);
     });
@@ -103,13 +106,18 @@ class FeedController {
     this.#closeModal(deletePostModal, closeDeleteModalBtn);
   }
 
-  async #deletePost(postId) {
-    return await FeedRepository.deletePost(this.#url, postId);
+  async #deletePost(modal, postId) {
+    await FeedRepository.deletePost(this.#url, postId);
+    await this.#getFeedData();
+    hideModal(modal);
   }
 
   #raiseDeleteModal(modal, id) {
     const submitBtn = modal.querySelector("#btn__delete--modal-submit");
-    submitBtn.addEventListener("click", async () => await this.#deletePost(id));
+    submitBtn.addEventListener(
+      "click",
+      async () => await this.#deletePost(modal, id)
+    );
   }
 
   #openDeleteModal(modal, buttons) {
