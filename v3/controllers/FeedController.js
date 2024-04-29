@@ -1,7 +1,7 @@
 import Feed from "../models/Feed";
 import { FeedRepository } from "../repository/FeedRepository";
 import { buildFeedPost } from "../views/FeedPost";
-import { showModal, hideModal } from "../utils/const";
+import { showModal, hideModal, removeFeedPosts } from "../utils/const";
 class FeedController {
   #document;
   #url;
@@ -14,6 +14,7 @@ class FeedController {
   async retrieveUserFeed() {
     try {
       await this.#getFeedData();
+      this.#addCreateModalListener();
     } catch (err) {
       console.log(err);
     }
@@ -31,17 +32,15 @@ class FeedController {
       return new Feed(id, description, created_at);
     });
 
+    removeFeedPosts();
     this.#buildFeedHTML(posts);
-    this.#addCreateModalListener();
     this.#addDeleteModalListeners();
   }
 
   #buildFeedHTML(posts) {
     try {
+      console.log(posts);
       const feedWrapper = this.#document.querySelector(".feed-wrapper");
-      while (feedWrapper.hasChildNodes()) {
-        feedWrapper.removeChild(feedWrapper.firstChild);
-      }
       posts.forEach((post) => {
         feedWrapper.appendChild(
           buildFeedPost(
@@ -56,6 +55,8 @@ class FeedController {
       console.log(err);
     }
   }
+
+  /* Modals Functionality  */
 
   /* Create */
   #addCreateModalListener() {
@@ -81,8 +82,11 @@ class FeedController {
         "input__create-post--modal"
       );
 
-      await FeedRepository.createNewPost(this.#url, description.value);
-      await this.#getFeedData();
+      const newPost = await FeedRepository.createNewPost(
+        this.#url,
+        description.value
+      );
+      console.log(newPost);
       description.value = "";
       hideModal(modal);
     });
@@ -108,11 +112,10 @@ class FeedController {
 
   async #deletePost(modal, postId) {
     await FeedRepository.deletePost(this.#url, postId);
-    await this.#getFeedData();
     hideModal(modal);
   }
 
-  #raiseDeleteModal(modal, id) {
+  #deleteBtnFunc(modal, id) {
     const submitBtn = modal.querySelector("#btn__delete--modal-submit");
     submitBtn.addEventListener(
       "click",
@@ -123,10 +126,12 @@ class FeedController {
   #openDeleteModal(modal, buttons) {
     buttons.forEach((btn) => {
       const id = btn.parentElement.id;
-      btn.addEventListener("click", () => this.#raiseDeleteModal(modal, id));
+      btn.addEventListener("click", () => this.#deleteBtnFunc(modal, id));
       btn.addEventListener("click", () => showModal(modal));
     });
   }
+
+  /* Update */
 
   #closeModal(modal, buttons) {
     buttons.addEventListener("click", () => {

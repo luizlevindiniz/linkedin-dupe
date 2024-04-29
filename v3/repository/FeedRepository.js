@@ -23,7 +23,7 @@ class FeedRepository {
       if (res.status < 200 || res.status >= 400) {
         return { message: "Unable to create post. Check request status." };
       }
-      return res.status;
+      return await res.data;
     } catch (err) {
       console.log(err);
       return { message: "Error" };

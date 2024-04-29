@@ -17,4 +17,12 @@ const hideModal = (modal) => {
   }
 };
 
-export { showModal, hideModal };
+const removeFeedPosts = () => {
+  const feedWrapper = document.querySelector(".feed-wrapper");
+  while (feedWrapper.firstChild) {
+    console.log(feedWrapper.firstChild);
+    feedWrapper.removeChild(feedWrapper.firstChild);
+  }
+};
+
+export { showModal, hideModal, removeFeedPosts };
