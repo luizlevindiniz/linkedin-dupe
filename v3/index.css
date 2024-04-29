@@ -49,80 +49,24 @@ button {
   margin: 0 auto;
 }
 
-/* Application Modal */
+/* Modals */
 
-.application__modal {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 2;
-}
+/* --- Add Profile Section Modal --- */
 
-.application__modal--overlay {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(1px);
-  z-index: 1;
-}
-
-.application__modal-content {
-  background-color: #fefefe;
-  padding: 2rem;
-  margin: 0 auto;
-  border: 1px solid #888;
-  width: 80%;
-  max-width: 800px;
-  border-radius: 1rem;
-  max-height: 800px;
-  overflow: auto;
-}
-
-.application__modal-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-bottom: 0.7rem;
-  border-bottom: 1px solid #4d4545;
-  color: #4d4545;
-}
-
-.modal__li {
+.add-profile-sec--modal__li {
   padding: 1rem;
   border-bottom: 1px solid #4d4545;
   color: #4d4545;
 }
 
-.application__modal-body ul li:last-child .modal__li {
+.add-profile-sec--modal-body ul li:last-child .expandable {
   border: none;
 }
 
-.modal__li .modal__li--expand {
+.add-profile-sec--modal__li--expand {
   color: #4d4545;
   font-size: 1.7rem;
   border: none;
-  cursor: pointer;
-}
-
-.application__modal-close-btn {
-  color: #4d4545;
-  font-size: 1.5rem;
-  border: none;
-  cursor: pointer;
-}
-
-.application__modal-close-btn:hover,
-.application__modal-close-btn:focus {
-  color: black;
-  text-decoration: none;
   cursor: pointer;
 }
 
@@ -151,12 +95,8 @@ button {
   padding-bottom: 0;
 }
 
-.hidden {
-  display: none;
-}
-
 /* Loading Modal */
-.loading__modal {
+.load-spinner--modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -170,12 +110,12 @@ button {
   z-index: 3;
 }
 
-.loading__modal--hidden {
+.load-spinner--modal--hidden {
   opacity: 0;
   visibility: hidden;
 }
 
-.loading__modal-spinner {
+.load-spinner--modal-spinner {
   content: "";
   width: 75px;
   height: 75px;
@@ -193,6 +133,69 @@ button {
   to {
     transform: rotate(1turn);
   }
+}
+
+/* --- common --- */
+#modal--overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(1px);
+  z-index: 1;
+}
+
+.modal {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  padding: 2rem;
+  margin: 0 auto;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 800px;
+  border-radius: 1rem;
+  max-height: 800px;
+  overflow: auto;
+}
+
+.modal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid #4d4545;
+  color: #4d4545;
+}
+
+.modal-close-btn {
+  color: #4d4545;
+  font-size: 1.5rem;
+  border: none;
+  cursor: pointer;
+}
+
+.modal-close-btn:hover,
+.modal-close-btn:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
 }
 
 /* Header */
@@ -698,7 +701,7 @@ footer p {
     font-size: 0.6em;
   }
 
-  .application__modal-content {
+  .add-profile-sec--modal-content {
     max-height: 450px;
   }
 }
