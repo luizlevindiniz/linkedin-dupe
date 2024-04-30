@@ -30,6 +30,22 @@ class FeedRepository {
     }
   }
 
+  static async updatePost(url, post, postId) {
+    let payload = {
+      description: post,
+    };
+    try {
+      const res = await axios.put(`${url}/feed/${postId}`, payload);
+      if (res.status < 200 || res.status >= 400) {
+        return { message: "Unable to update post. Check request status." };
+      }
+      return await res.data;
+    } catch (err) {
+      console.log(err);
+      return { message: "Error" };
+    }
+  }
+
   static async deletePost(url, postId) {
     try {
       const res = await axios.delete(`${url}/feed/${postId}`);

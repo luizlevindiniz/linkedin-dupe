@@ -152,11 +152,7 @@
           </button>
         </div>
         <div class="create-post--modal-body">
-          <form
-            action="http://localhost:3000/feed"
-            method="post"
-            id="form__create-new-post"
-          >
+          <form id="form__create-new-post" method="dialog">
             <label for="input__create-post--modal">Description:</label>
             <textarea
               name="description"
@@ -172,6 +168,8 @@
         </div>
       </div>
     </div>
+
+    <div class="update-modal-wrappers" id="update-modal-wrappers"></div>
 
     <div class="modal--overlay hidden" id="modal--overlay"></div>
 

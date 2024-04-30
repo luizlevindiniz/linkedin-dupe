@@ -1,6 +1,7 @@
 import Feed from "../models/Feed";
 import { FeedRepository } from "../repository/FeedRepository";
 import { buildFeedPost } from "../views/FeedPost";
+import { buildUpdateModal } from "../views/UpdateModal";
 import { showModal, hideModal, thisObjectIsIterable } from "../utils/const";
 class FeedController {
   #document;
@@ -34,6 +35,7 @@ class FeedController {
     this.#buildFeedHTML(posts);
     this.#listenNewPostModal();
     this.#listenDeletePostModal();
+    this.#listenUpdatePostModal();
   }
 
   #buildFeedHTML(posts) {
@@ -48,6 +50,12 @@ class FeedController {
             this.#document
           )
         );
+      });
+      const updateModalWrapper = this.#document.querySelector(
+        "#update-modal-wrappers"
+      );
+      posts.forEach((post) => {
+        updateModalWrapper.appendChild(buildUpdateModal(post.getId()));
       });
     } catch (err) {
       console.log(err);
@@ -102,6 +110,7 @@ class FeedController {
         const feedWrapper = document.querySelector("#feed-wrapper");
         await feedWrapper.appendChild(htmlToAppend);
         this.#addDeleteModalToNewPost(feedWrapper);
+        this.#addUpdateModalToNewPost(feedWrapper);
       }
       description.value = "";
       hideModal(modal);
@@ -162,6 +171,62 @@ class FeedController {
   }
 
   /* Update */
+
+  #listenUpdatePostModal() {
+    const updateModalsList = document.querySelectorAll(".edit-post--modal");
+    updateModalsList.forEach((modal) => {
+      const id = modal.dataset.id;
+
+      this.#applyUpdateListeners(modal, id);
+    });
+  }
+
+  #applyUpdateListeners(modal, id) {
+    const openBtn = document.querySelector(`#btn__edit-post--modal-${id}`);
+    const closeBtn = document.querySelector(`#btn__edit--modal-close-${id}`);
+    const form = document.querySelector(`#form__edit-post-${id}`);
+
+    openBtn.addEventListener("click", () => showModal(modal));
+    this.#closeModal(modal, closeBtn);
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      let description = this.#document.getElementById(
+        `input__edit-post--modal-${id}`
+      );
+
+      const updatePost = await FeedRepository.updatePost(
+        this.#url,
+        description.value,
+        id
+      );
+
+      if (updatePost) {
+        const originalPost = this.#document.querySelector(`#post-id-${id}`);
+        const paragraph = originalPost.getElementsByClassName(
+          "card-feed-content-text"
+        )[0];
+        paragraph.innerText = description.value;
+      }
+      description.value = "";
+      hideModal(modal);
+    });
+  }
+
+  async #addUpdateModalToNewPost(feedWrapper) {
+    const id = feedWrapper.lastChild.dataset.id;
+
+    const updateModalWrapper = this.#document.querySelector(
+      "#update-modal-wrappers"
+    );
+    const htmlToAppend = buildUpdateModal(id);
+    await updateModalWrapper.appendChild(htmlToAppend);
+
+    const modal = updateModalWrapper.lastChild;
+
+    this.#applyUpdateListeners(modal, id);
+  }
 }
 
 export { FeedController };

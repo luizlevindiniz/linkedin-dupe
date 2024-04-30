@@ -1,6 +1,6 @@
 function buildFeedPost(id, description, createdAt, document) {
   const feedString = `
-    <div class="card-feed" id='post-id-${id}'>
+    <div class="card-feed" id='post-id-${id}' data-id=${id}>
         <div class="card-feed-head">
           <div class="feed-poster-profile-picture">
             <img src='https://images.unsplash.com/photo-1438761681033-6461ffad8d80?
@@ -18,7 +18,7 @@ function buildFeedPost(id, description, createdAt, document) {
           </div>
         </div>
         <div class="card-feed-head-icons"  id=${id}>
-          <button id="btn__edit-post--modal">
+          <button id="btn__edit-post--modal-${id}">
             <i class="fa-solid fa-pen-to-square"></i>
           </button>
         <button id="btn__delete-post--modal" class="btn__delete-post--modal">

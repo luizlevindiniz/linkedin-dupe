@@ -188,6 +188,36 @@ button {
   background: #013e5f;
 }
 
+/* --- Edit Post Modal --- */
+.edit-post--modal-body {
+  margin-top: 1em;
+}
+
+.edit-post--modal-body textarea {
+  width: 100%;
+  display: block;
+  padding: 10px;
+  height: 6em;
+  border-radius: 5px;
+  outline: none;
+  font-size: 16px;
+  border: 1px solid #615d5d;
+}
+
+#btn__edit--modal-submit {
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  color: #ffffff;
+  font-size: 20px;
+  background: #911a9c;
+  padding: 10px 20px 10px 20px;
+  margin-top: 10px;
+}
+
+#btn__edit--modal-submit:hover {
+  background: #2f0333;
+}
 /* --- common --- */
 #modal--overlay {
   position: fixed;
