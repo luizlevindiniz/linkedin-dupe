@@ -25,4 +25,8 @@ const removeFeedPosts = () => {
   }
 };
 
-export { showModal, hideModal, removeFeedPosts };
+const thisObjectIsIterable = (obj) => {
+  return typeof obj[Symbol.iterator] === "function";
+};
+
+export { showModal, hideModal, removeFeedPosts, thisObjectIsIterable };
