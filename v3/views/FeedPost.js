@@ -21,7 +21,7 @@ function buildFeedPost(id, description, createdAt, document) {
           <button id="btn__edit-post--modal-${id}">
             <i class="fa-solid fa-pen-to-square"></i>
           </button>
-        <button id="btn__delete-post--modal" class="btn__delete-post--modal">
+        <button id="btn__delete-post--modal-${id}" class="btn__delete-post--modal">
             <i class="fa-solid fa-trash"></i>
           </button>
         </div>  

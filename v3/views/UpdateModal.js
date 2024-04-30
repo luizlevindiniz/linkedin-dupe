@@ -15,7 +15,7 @@ function buildUpdateModal(id) {
                 class="form__edit"
                 
                 >
-                    <label for="input__edit-post--modal">Description:</label>
+                    <label for="input__edit-post--modal-${id}">Description:</label>
                     <textarea
                     name="description"
                     type="text"

@@ -17,8 +17,4 @@ const hideModal = (modal) => {
   }
 };
 
-const thisObjectIsIterable = (obj) => {
-  return typeof obj[Symbol.iterator] === "function";
-};
-
-export { showModal, hideModal, thisObjectIsIterable };
+export { showModal, hideModal };
