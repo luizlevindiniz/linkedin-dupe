@@ -28,7 +28,7 @@ class FeedController {
       this.#buildFeedHTML(posts);
       this.#listenNewPostModal();
       this.#listenUpdatePostModal();
-      this.#listenRemainingModals();
+      this.#listenDeletePostModal();
     } catch (err) {
       console.log(err);
     }
@@ -51,24 +51,6 @@ class FeedController {
 
       feedWrapper.appendChild(feedPostHTML);
       updateModalWrapper.appendChild(updateModalHTML);
-    });
-  }
-
-  #listenRemainingModals() {
-    const deletePostModal = this.#document.querySelector("#delete--modal");
-    const closeDeleteModalBtn = this.#document.getElementById(
-      "btn__delete--modal-close"
-    );
-
-    closeDeleteModalBtn.addEventListener("click", () => {
-      hideModal(deletePostModal);
-    });
-
-    const cardFeeds = this.#document.querySelectorAll(".card-feed");
-
-    cardFeeds.forEach((post) => {
-      const postId = post.dataset.id;
-      this.#listenDeletePostModal(deletePostModal, postId);
     });
   }
 
@@ -109,8 +91,8 @@ class FeedController {
         );
         const feedWrapper = document.querySelector("#feed-wrapper");
         await feedWrapper.appendChild(htmlToAppend);
-        this.#addDeleteModalToNewPost(feedWrapper);
-        this.#addUpdateModalToNewPost(feedWrapper);
+        this.#addDeleteFunctionToNewPost(feedWrapper);
+        this.#addUpdateFunctionToNewPost(feedWrapper);
       }
       description.value = "";
       hideModal(newPostModal);
@@ -118,41 +100,64 @@ class FeedController {
   }
 
   /* -- Delete Post Modal -- */
-  #listenDeletePostModal(deletePostModal, postId) {
-    const deleteBtn = this.#document.querySelector(
-      `#btn__delete-post--modal-${postId}`
-    );
-    deleteBtn.addEventListener("click", () =>
-      this.#deletePostFunc(deletePostModal, postId)
-    );
-    deleteBtn.addEventListener("click", () => showModal(deletePostModal));
-  }
 
-  #deletePostFunc(deletePostModal, postId) {
+  #listenDeletePostModal() {
+    const deletePostModal = this.#document.querySelector("#delete--modal");
+    const closeDeleteModalBtn = this.#document.getElementById(
+      "btn__delete--modal-close"
+    );
+
+    closeDeleteModalBtn.addEventListener("click", () => {
+      deletePostModal.dataset.id = "none";
+      hideModal(deletePostModal);
+    });
+
     const submitBtn = deletePostModal.querySelector(
       "#btn__delete--modal-submit"
     );
 
     submitBtn.addEventListener("click", async () => {
-      await FeedRepository.deletePost(this.#url, postId);
-      const postToDelete = this.#document.getElementById(`post-id-${postId}`);
-      await postToDelete.remove();
-      hideModal(deletePostModal);
+      const id = deletePostModal.dataset.id;
+
+      if (id !== "none") {
+        await FeedRepository.deletePost(this.#url, id);
+        const postToDelete = this.#document.getElementById(`post-id-${id}`);
+        await postToDelete.remove();
+        deletePostModal.dataset.id = "none";
+        hideModal(deletePostModal);
+      }
+    });
+
+    const cardFeeds = this.#document.querySelectorAll(".card-feed");
+
+    cardFeeds.forEach((post) => {
+      const postId = post.dataset.id;
+      this.#deletePost(deletePostModal, postId);
     });
   }
 
-  #addDeleteModalToNewPost(feedWrapper) {
-    console.log(feedWrapper.lastChild);
-    const postId = feedWrapper.lastChild.dataset.id;
+  #deletePost(deletePostModal, postId) {
+    const deleteBtn = this.#document.querySelector(
+      `#btn__delete-post--modal-${postId}`
+    );
+    deleteBtn.addEventListener("click", () => {
+      showModal(deletePostModal);
+      deletePostModal.dataset.id = postId;
+    });
+  }
+
+  #addDeleteFunctionToNewPost(feedWrapper) {
     const deleteBtn = feedWrapper.lastChild.getElementsByClassName(
       "btn__delete-post--modal"
     )[0];
+
+    const postId = deleteBtn.parentElement.id;
     const deletePostModal = this.#document.querySelector("#delete--modal");
 
-    deleteBtn.addEventListener("click", () =>
-      this.#deletePostFunc(deletePostModal, postId)
-    );
-    deleteBtn.addEventListener("click", () => showModal(deletePostModal));
+    deleteBtn.addEventListener("click", () => {
+      showModal(deletePostModal);
+      deletePostModal.dataset.id = postId;
+    });
   }
 
   /* Update */
@@ -161,7 +166,6 @@ class FeedController {
     const updateModalsList = document.querySelectorAll(".edit-post--modal");
     updateModalsList.forEach((modal) => {
       const id = modal.dataset.id;
-
       this.#applyUpdateListeners(modal, id);
     });
   }
@@ -172,20 +176,18 @@ class FeedController {
     const form = document.querySelector(`#form__edit-post-${id}`);
 
     openBtn.addEventListener("click", () => showModal(modal));
-    closeBtn.addEventListener("click", () => {
-      hideModal(modal);
-    });
+    closeBtn.addEventListener("click", () => hideModal(modal));
 
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
 
-      let description = this.#document.getElementById(
+      let postDescription = this.#document.getElementById(
         `input__edit-post--modal-${id}`
       );
 
       const updatePost = await FeedRepository.updatePost(
         this.#url,
-        description.value,
+        postDescription.value,
         id
       );
 
@@ -194,14 +196,14 @@ class FeedController {
         const paragraph = originalPost.getElementsByClassName(
           "card-feed-content-text"
         )[0];
-        paragraph.innerText = description.value;
+        paragraph.innerText = postDescription.value;
       }
-      description.value = "";
+      postDescription.value = "";
       hideModal(modal);
     });
   }
 
-  async #addUpdateModalToNewPost(feedWrapper) {
+  async #addUpdateFunctionToNewPost(feedWrapper) {
     const id = feedWrapper.lastChild.dataset.id;
 
     const updateModalWrapper = this.#document.querySelector(
