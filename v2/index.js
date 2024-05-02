@@ -1,7 +1,9 @@
 const openModalBtn = document.querySelector(".profile-update-menu-add-btn");
-const modal = document.querySelector(".application__modal");
-const overlay = document.querySelector(".application__modal--overlay");
-const closeModalBtn = document.querySelector(".application__modal-close-btn");
+const modal = document.querySelector(".add-profile-sec--modal");
+const overlay = document.querySelector(".add-profile-sec--modal--overlay");
+const closeModalBtn = document.querySelector(
+  ".add-profile-sec--modal-close-btn"
+);
 
 openModalBtn.addEventListener("click", () => {
   const display = getComputedStyle(modal).display;

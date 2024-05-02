@@ -8,4 +8,16 @@ export default class Feed {
     this.#description = description;
     this.#created_at = created_at;
   }
+
+  getId() {
+    return this.#id;
+  }
+
+  getDescription() {
+    return this.#description;
+  }
+
+  getCreatedAt() {
+    return this.#created_at;
+  }
 }

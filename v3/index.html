@@ -16,29 +16,28 @@
     />
     <title>Profile | LinkedIn</title>
     <script src="./app.js" defer></script>
-    <script src="./index.js" defer></script>
   </head>
   <body>
     <!-- Loading Overlay -->
-    <div class="loading__modal">
-      <div class="loading__modal-spinner"></div>
+    <div class="load-spinner--modal">
+      <div class="load-spinner--modal-spinner"></div>
     </div>
     <!--Modals-->
-    <div class="application__modal hidden">
-      <div class="application__modal-content">
-        <div class="application__modal-head">
+    <div class="modal hidden" id="add-profile-sec--modal">
+      <div class="modal-content">
+        <div class="modal-head">
           <h2>Add to profile</h2>
-          <button class="application__modal-close-btn">
-            <i class="fa-solid fa-x"></i>
+          <button id="btn__add-profile-sec--modal-close">
+            <i class="fa-solid fa-x modal-close-btn"></i>
           </button>
         </div>
-        <div class="application__modal-body">
+        <div class="add-profile-sec--modal-body">
           <ul>
             <li>
-              <div class="modal__li expand-core">
+              <div class="add-profile-sec--modal__li expandable expand-core">
                 <div class="modal--expandable-head">
                   <h3>Core</h3>
-                  <button class="modal__li--expand">
+                  <button class="add-profile-sec--modal__li--expand">
                     <i class="fa-solid fa-chevron-down"></i>
                     <i class="fa-solid fa-chevron-up hidden"></i>
                   </button>
@@ -63,10 +62,12 @@
               </div>
             </li>
             <li>
-              <div class="modal__li expand-recommended">
+              <div
+                class="add-profile-sec--modal__li expandable expand-recommended"
+              >
                 <div class="modal--expandable-head">
                   <h3>Recommended</h3>
-                  <button class="modal__li--expand">
+                  <button class="add-profile-sec--modal__li--expand">
                     <i class="fa-solid fa-chevron-down"></i>
                     <i class="fa-solid fa-chevron-up hidden"></i>
                   </button>
@@ -93,10 +94,12 @@
               </div>
             </li>
             <li>
-              <div class="modal__li expand-additional">
+              <div
+                class="add-profile-sec--modal__li expandable expand-additional"
+              >
                 <div class="modal--expandable-head ">
                   <h3>Additional</h3>
-                  <button class="modal__li--expand">
+                  <button class="add-profile-sec--modal__li--expand">
                     <i class="fa-solid fa-chevron-down"></i>
                     <i class="fa-solid fa-chevron-up hidden"></i>
                   </button>
@@ -124,7 +127,57 @@
         </div>
       </div>
     </div>
-    <div class="application__modal--overlay hidden"></div>
+
+    <div class="modal hidden" id="delete--modal" data-id="none">
+      <div class="modal-content">
+        <div class="modal-head">
+          <h2>Delete post</h2>
+          <button id="btn__delete--modal-close">
+            <i class="fa-solid fa-x modal-close-btn"></i>
+          </button>
+        </div>
+        <div class="delete--modal-body">
+          <p>Are you sure you want to delete this post?</p>
+          <button
+            id="btn__delete--modal-submit"
+            class="btn__delete--modal-submit"
+          >
+            Yes
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal hidden" id="create-post--modal">
+      <div class="modal-content">
+        <div class="modal-head">
+          <h2>New Post</h2>
+          <button id="btn__create--modal-close">
+            <i class="fa-solid fa-x modal-close-btn"></i>
+          </button>
+        </div>
+        <div class="create-post--modal-body">
+          <form id="form__create-new-post" method="dialog">
+            <label for="input__create-post--modal">Description:</label>
+            <textarea
+              name="description"
+              type="text"
+              id="input__create-post--modal"
+              placeholder="Your post here..."
+              required
+            ></textarea>
+            <button id="btn__create--modal-submit" type="submit">
+              Publish
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="update-modal-wrappers" id="update-modal-wrappers"></div>
+
+    <div class="modal--overlay hidden" id="modal--overlay"></div>
+
     <!--App Outlet-->
     <div class="outlet">
       <!--Navbar-->
@@ -137,7 +190,11 @@
             </a>
             <div class="search-bar">
               <i class="fa-solid fa-magnifying-glass"></i>
-              <input type="text" placeholder="Search" />
+              <input
+                type="text"
+                placeholder="Search"
+                id="nav-search-bar-input-field"
+              />
             </div>
           </div>
           <div class="navbar-content">
@@ -178,6 +235,7 @@
                     src="../assets/unknown.jpg"
                     alt="profile-pic"
                     class="navbar-profile-picture"
+                    id="navbar-profile-picture"
                   />
                   <span> Me <i class="fa-solid fa-chevron-down"></i></span>
                 </a>
@@ -208,6 +266,7 @@
                 src="../assets/genericBackground.jpg"
                 alt="cover pic"
                 class="cover"
+                id="profile-cover"
               />
             </div>
 
@@ -217,6 +276,7 @@
                   src="../assets/unknown.jpg"
                   alt="user pic"
                   class="profile-pic"
+                  id="profile-picture"
                 />
                 <div>
                   <img
@@ -235,15 +295,18 @@
               </div>
 
               <div class="profile-name">
-                <h1 class="profile-name--name-h1">User</h1>
+                <h1 class="profile-name--name-h1" id="profile-name">User</h1>
                 <img src="../assets/verified.png" alt="" />
               </div>
 
-              <h3 class="profile--role">Role</h3>
+              <h3 class="profile--role" id="profile-role">Role</h3>
 
               <div class="profile-location-info">
                 <div>
-                  <p class="profile-location-info--paragraph">
+                  <p
+                    class="profile-location-info--paragraph"
+                    id="profile-location"
+                  >
                     •
                   </p>
                   <a>Check contact infos</a>
@@ -256,7 +319,10 @@
               </div>
               <div class="profile-update-menu">
                 <button class="profile-update-menu-open-to-btn">Open to</button>
-                <button class="profile-update-menu-add-btn">
+                <button
+                  class="profile-update-menu-add-btn"
+                  id="btn__add-profile-sec--modal-open"
+                >
                   Add profile section
                 </button>
                 <div class="profile-update-menu-more">
@@ -292,37 +358,14 @@
 
           <section class="feed">
             <div>
-              <h3>Feed</h3>
-              <div class="card-feed">
-                <div class="feed-poster-profile-picture">
-                  <img src="../assets/person2.jpg" alt="aws icon" />
-                  <div>
-                    <h4><a href="#">Amy Watson</a></h4>
-                    <h5>
-                      Aerospace Engineer at Boeing
-                    </h5>
-                    <h6>
-                      2d ago
-                    </h6>
-                  </div>
-                </div>
-                <div class="card-feed-content">
-                  <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Odio corporis facilis, debitis a qui eum dolor repudiandae
-                    harum, impedit, fugit cumque. Tenetur, a quas labore eveniet
-                    accusantium, vero reiciendis quaerat inventore vel
-                    consequatur iusto fugiat perferendis rerum nihil qui
-                    deleniti earum eum numquam velit quod explicabo, fuga saepe
-                    ad temporibus!
-                  </p>
-
-                  <img
-                    src="../assets/feed_post.jpg"
-                    alt="post"
-                    class="post-image"
-                  />
-                </div>
+              <div class="feed-header">
+                <h3>Feed</h3>
+                <button id="btn__create-post--modal">
+                  <i class="fa-solid fa-plus"></i>
+                </button>
+              </div>
+              <div class="feed-wrapper" id="feed-wrapper">
+                <!--Render Feed Content Here-->
               </div>
             </div>
           </section>

@@ -32,6 +32,14 @@ section {
   padding-bottom: 1rem;
 }
 
+button {
+  background: none;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
 .application {
   display: grid;
   gap: 10px 0;
@@ -41,80 +49,24 @@ section {
   margin: 0 auto;
 }
 
-/* Application Modal */
+/* Modals */
 
-.application__modal {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 2;
-}
+/* --- Add Profile Section Modal --- */
 
-.application__modal--overlay {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(1px);
-  z-index: 1;
-}
-
-.application__modal-content {
-  background-color: #fefefe;
-  padding: 2rem;
-  margin: 0 auto;
-  border: 1px solid #888;
-  width: 80%;
-  max-width: 800px;
-  border-radius: 1rem;
-  max-height: 800px;
-  overflow: auto;
-}
-
-.application__modal-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-bottom: 0.7rem;
-  border-bottom: 1px solid #4d4545;
-  color: #4d4545;
-}
-
-.modal__li {
+.add-profile-sec--modal__li {
   padding: 1rem;
   border-bottom: 1px solid #4d4545;
   color: #4d4545;
 }
 
-.application__modal-body ul li:last-child .modal__li {
+.add-profile-sec--modal-body ul li:last-child .expandable {
   border: none;
 }
 
-.modal__li .modal__li--expand {
+.add-profile-sec--modal__li--expand {
   color: #4d4545;
   font-size: 1.7rem;
   border: none;
-  cursor: pointer;
-}
-
-.application__modal-close-btn {
-  color: #4d4545;
-  font-size: 1.5rem;
-  border: none;
-  cursor: pointer;
-}
-
-.application__modal-close-btn:hover,
-.application__modal-close-btn:focus {
-  color: black;
-  text-decoration: none;
   cursor: pointer;
 }
 
@@ -143,12 +95,8 @@ section {
   padding-bottom: 0;
 }
 
-.hidden {
-  display: none;
-}
-
-/* Loading Modal */
-.loading__modal {
+/* --- Loading Modal --- */
+.load-spinner--modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -162,12 +110,12 @@ section {
   z-index: 3;
 }
 
-.loading__modal--hidden {
+.load-spinner--modal--hidden {
   opacity: 0;
   visibility: hidden;
 }
 
-.loading__modal-spinner {
+.load-spinner--modal-spinner {
   content: "";
   width: 75px;
   height: 75px;
@@ -185,6 +133,152 @@ section {
   to {
     transform: rotate(1turn);
   }
+}
+
+/* --- Delete Post Modal --- */
+.delete--modal-body {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2em;
+  margin-top: 1em;
+  align-items: center;
+}
+
+#btn__delete--modal-submit {
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  color: #ffffff;
+  background: #b43030;
+  padding: 0.5em 1em;
+}
+
+#btn__delete--modal-submit:hover {
+  background: #ac140a;
+}
+
+/* --- Create Post Modal --- */
+.create-post--modal-body {
+  margin-top: 1em;
+}
+
+.create-post--modal-body textarea {
+  width: 100%;
+  display: block;
+  padding: 10px;
+  height: 6em;
+  border-radius: 5px;
+  outline: none;
+  font-size: 16px;
+  border: 1px solid #615d5d;
+}
+
+#btn__create--modal-submit {
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  color: #ffffff;
+  font-size: 20px;
+  background: #0075b5;
+  padding: 10px 20px 10px 20px;
+  margin-top: 10px;
+}
+
+#btn__create--modal-submit:hover {
+  background: #013e5f;
+}
+
+/* --- Edit Post Modal --- */
+.edit-post--modal-body {
+  margin-top: 1em;
+}
+
+.edit-post--modal-body textarea {
+  width: 100%;
+  display: block;
+  padding: 10px;
+  height: 6em;
+  border-radius: 5px;
+  outline: none;
+  font-size: 16px;
+  border: 1px solid #615d5d;
+}
+
+#btn__edit--modal-submit {
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  color: #ffffff;
+  font-size: 20px;
+  background: #911a9c;
+  padding: 10px 20px 10px 20px;
+  margin-top: 10px;
+}
+
+#btn__edit--modal-submit:hover {
+  background: #2f0333;
+}
+/* --- common --- */
+#modal--overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(1px);
+  z-index: 1;
+}
+
+.modal {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  padding: 2rem;
+  margin: 0 auto;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 800px;
+  border-radius: 1rem;
+  max-height: 800px;
+  overflow: auto;
+}
+
+.modal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid #4d4545;
+  color: #4d4545;
+}
+
+.modal-close-btn {
+  color: #4d4545;
+  font-size: 1.5rem;
+  border: none;
+  cursor: pointer;
+}
+
+.modal-close-btn:hover,
+.modal-close-btn:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
 }
 
 /* Header */
@@ -422,6 +516,7 @@ section {
   border-radius: 50%;
   width: 2.5rem;
   height: 2.5rem;
+  border: 1px solid black;
 }
 
 .profile-update-menu-more button:hover {
@@ -471,12 +566,41 @@ section {
 .feed h3 {
   font-size: 1.2rem;
   line-height: 1.25;
-  margin-bottom: 7px;
+}
+
+.feed-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.card-feed {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid #d1cec8;
+  padding-top: 10px;
+  justify-content: center;
+}
+
+.card-feed p {
+  margin-bottom: 10px;
+  text-align: justify;
+}
+
+.card-feed-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-feed-head-icons i {
+  padding-right: 5px;
 }
 
 .feed-poster-profile-picture img {
-  width: 3em;
-  height: 3em;
+  width: 3rem;
+  height: 3rem;
   margin-right: 10px;
   border-radius: 50%;
 }
@@ -489,16 +613,11 @@ section {
 
 .post-image {
   width: 100%;
+  border-radius: 10px;
 }
 
-.card-feed {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-.card-feed p {
-  margin-bottom: 10px;
+.card-feed-content {
+  padding-bottom: 10px;
 }
 
 /* Aside Right */
@@ -623,9 +742,13 @@ section {
 
 footer p {
   width: 1200px;
-  padding-left: 0.7rem;
+  padding-left: 0.2rem;
   margin: 1rem auto;
   color: #38434f;
+}
+
+.footer-content ul {
+  padding-right: 10px;
 }
 
 /* --- Medias --- */
@@ -661,7 +784,7 @@ footer p {
     font-size: 0.6em;
   }
 
-  .application__modal-content {
+  .add-profile-sec--modal-content {
     max-height: 450px;
   }
 }
@@ -865,6 +988,6 @@ footer p {
 
   footer p {
     width: 80vw;
-    padding-left: 10px;
+    padding-left: 2px;
   }
 }
